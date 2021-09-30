@@ -32,7 +32,10 @@ const Item = () => {
   };
   useEffect(() => {
     window.addEventListener("resize", setSizeHandler);
-  },[]);
+    return () => {
+      window.removeEventListener("resize", setSizeHandler);
+    };
+  }, []);
   return (
     <div>
       <h2>Width: {size.width}</h2>
